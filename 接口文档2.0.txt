@@ -1,0 +1,518 @@
+请求地址：http://localhost:8080/sqlTest/register.do post
+
+请求参数：String user_name
+	String user_password
+	int user_sex
+	int user_age
+	String user_pro
+	String user_hobby
+
+返回值 json
+
+```
+"ResultData": {
+	"status":200,
+	"message":"注册成功！",
+	"data":	
+	{
+	"user_id":6,
+	"user_name":"aa",
+	"user_password":"aa",
+	"user_sex":1,
+	"user_age":12,
+	"user_pro":"程序员",
+	"user_hobby":"吹牛",
+	"following_list":"",
+	"fan_list":"",
+	"following_num":0,
+	"fan_num":0,
+	"user_lock":0,
+	"theme_collect_list":0,
+	"is_manager":0
+	}}
+```
+
+
+请求地址：http://localhost:8080/sqlTest/login.do post
+
+请求参数：String user_name
+	String user_password
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"登录成功！",
+	"data":null
+	}
+
+       
+```
+
+```
+请求地址：http://localhost:8080/sqlTest/loginManager.do post
+
+请求参数：String user_name
+	String user_password
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"登录成功！",
+	"data":null
+	}
+
+       
+```
+请求地址：http://localhost:8080/sqlTest/updateUserMsg.do post
+
+请求参数：int user_id
+	String user_name
+	String user_password
+	int user_sex
+	int user_age
+	String user_pro
+	String user_hobby
+
+返回值 json
+
+```
+"ResultData": {
+	"status":200,
+	"message":"修改成功！",
+	"data":{
+		"user_id":3,
+		"user_name":"新名字",
+		"user_password":"abc123",
+		"user_sex":1,
+		"user_age":12,
+		"user_pro":"新职业",
+		"user_hobby":"新爱好",
+		"following_list":"1,2,5",
+		"fan_list":"",
+		"following_num":3,
+		"fan_num":0,
+		"user_lock":0,
+		"theme_collect_list":"3",
+		"is_manager":0
+		}}
+
+       
+```
+
+请求地址：http://localhost:8080/sqlTest/searchPerson.do post
+
+请求参数：String user_name
+
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"寻找目标用户存在！",
+	"data":
+	{
+		"user_id":6,
+		"user_name":"aa",
+		"user_password":"aa",
+		"user_sex":1,
+		"user_age":12,
+		"user_pro":"程序员",
+		"user_hobby":"吹牛",
+		"following_list":"",
+		"fan_list":"",
+		"following_num":0,
+		"fan_num":0,
+		"user_lock":0,
+		"theme_collect_list":"",
+		"is_manager":0
+	}}
+
+       
+```
+
+```
+请求地址：http://localhost:8080/sqlTest/showFollowList.do post
+
+请求参数：int user_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回关注列表用户信息",
+	"data":[{
+		"user_id":2,
+		"user_name":"呃呃2号",
+		"user_password":"abc123",
+		"user_sex":1,
+		"user_age":17,
+		"user_pro":"吟游诗人",
+		"user_hobby":"吹哨",
+		"following_list":"",
+		"fan_list":"1,3",
+		"following_num":0,
+		"fan_num":2,
+		"user_lock":1,
+		"theme_collect_list":"",
+		"is_manager":0},
+{"user_id":4,"user_name":"呃呃4号","user_password":"我是成龙","user_sex":1,"user_age":17,"user_pro":"吟游诗人","user_hobby":"吹哨","following_list":"","fan_list":"1","following_num":0,"fan_num":1,"user_lock":0,"theme_collect_list":"","is_manager":0}]
+	}
+
+```
+请求地址：http://localhost:8080/sqlTest/showFanList.do post
+
+请求参数：int user_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回粉丝列表用户信息",
+	"data":[{"user_id":3,"user_name":"呃呃3号","user_password":"abc123","user_sex":1,"user_age":17,"user_pro":"吟游诗人","user_hobby":"吹口哨","following_list":"1,2,5","fan_list":"","following_num":3,"fan_num":0,"user_lock":0,"theme_collect_list":"3","is_manager":0}]}
+
+       
+```
+请求地址：http://localhost:8080/sqlTest/followPerson.do post
+
+请求参数：int user_id
+	int follow_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"成功关注该用户！",
+	"data":{"user_id":4,"user_name":"呃呃4号","user_password":"我是成龙","user_sex":1,"user_age":17,"user_pro":"吟游诗人","user_hobby":"吹口哨","following_list":"5","fan_list":"1","following_num":1,"fan_num":1,"user_lock":0,"theme_collect_list":"","is_manager":0}}
+
+       
+```
+请求地址：http://localhost:8080/sqlTest/collectTheme.do post
+
+请求参数：int user_id
+	int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"成功收藏该主题帖！",
+	"data":{"user_id":1,"user_name":"ee","user_password":"abc123","user_sex":0,"user_age":17,"user_pro":"吟游诗人","user_hobby":"吹口哨","following_list":"2,4","fan_list":"3","following_num":2,"fan_num":1,"user_lock":0,"theme_collect_list":"2,3,1","is_manager":1}}
+
+```
+
+请求地址：http://localhost:8080/sqlTest/showPersonAllByLock.do post
+
+请求参数：无
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回全部锁定的用户",
+	"data":[{"user_id":2,"user_name":"呃呃2号","user_password":"abc123","user_sex":1,"user_age":17,"user_pro":"吟游诗人","user_hobby":"吹口哨","following_list":"","fan_list":"1,3","following_num":0,"fan_num":2,"user_lock":1,"theme_collect_list":"","is_manager":0}]
+	}
+
+```
+
+请求地址：http://localhost:8080/sqlTest/unlockPerson.do post
+
+请求参数：int user_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已解锁该用户",
+	"data":[{"user_id":2,"user_name":"呃呃2号","user_password":"abc123","user_sex":1,"user_age":17,"user_pro":"吟游诗人","user_hobby":"吹口哨","following_list":"","fan_list":"1,3","following_num":0,"fan_num":2,"user_lock":0,"theme_collect_list":"","is_manager":0}]
+	}
+
+```
+
+请求地址：http://localhost:8080/sqlTest/lockPerson.do post
+
+请求参数：int user_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已锁定该用户",
+	"data":[{"user_id":2,"user_name":"呃呃2号","user_password":"abc123","user_sex":1,"user_age":17,"user_pro":"吟游诗人","user_hobby":"吹口哨","following_list":"","fan_list":"1,3","following_num":0,"fan_num":2,"user_lock":1,"theme_collect_list":"","is_manager":0}]
+	}
+
+```
+
+请求地址：http://localhost:8080/sqlTest/showThemeAll.do post
+
+请求参数：无
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已按照置顶帖优先、发帖时间降序的顺序返回全部未锁定的主题帖",
+	"data":[{
+		"theme_post_id":2,
+		"theme_post_title":"我的第二个主题帖",
+		"theme_post_content":"我恨你们！",		"user_id":1,
+		"theme_post_createTime":1651766332000,
+		"is_fine":0,
+		"is_top":1,
+		"theme_post_lock":0},
+		{"theme_post_id":3,"theme_post_title":"我的第三个主题帖","theme_post_content":"我恨你们！","user_id":1,"theme_post_createTime":1651766355000,"is_fine":0,"is_top":0,"theme_post_lock":0},{"theme_post_id":1,"theme_post_title":"我的第一个主题帖","theme_post_content":"我恨你们！","user_id":1,"theme_post_createTime":1651505627000,"is_fine":0,"is_top":0,"theme_post_lock":0}]}
+
+       
+```
+请求地址：http://localhost:8080/sqlTest/showThemeAllByLock.do post
+
+请求参数：无
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已按照置顶帖优先、发帖时间降序的顺序返回全部锁定的主题帖",
+	"data":[{
+		//跟上面一样
+		}]}
+
+       
+```
+
+```
+请求地址：http://localhost:8080/sqlTest/showThemeCollected.do post
+
+请求参数：int user_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回该用户收藏的主题帖信息",
+	"data":[{
+		//跟上面一样
+		}]}
+
+       
+```
+
+```
+请求地址：http://localhost:8080/sqlTest/addNewTheme.do post
+
+请求参数：String theme_post_title
+	String theme_post_content
+	int user_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已发送主题帖，请等待管理员审核",
+	"data":{"theme_post_id":4,
+	"theme_post_title":"呃呃",
+	"theme_post_content":"测试",
+	"user_id":1,
+	"theme_post_createTime":1651774518355,
+	"is_fine":0,
+	"is_top":0,
+	"theme_post_lock":1
+}}
+
+       
+```
+请求地址：http://localhost:8080/sqlTest/unlockTheme.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已解锁该主题帖",
+	"data":{
+		"theme_post_id":5,
+		"theme_post_title":"用来测试的帖子",
+		"theme_post_content":"测试内容",
+		"user_id":1,
+		"theme_post_createTime":1651995333000,
+		"is_fine":0,
+		"is_top":0,
+		"theme_post_lock":0
+}}
+
+       
+```
+
+请求地址：http://localhost:8080/sqlTest/lockTheme.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已锁定该主题帖",
+	"data":{
+		"theme_post_id":5,
+		"theme_post_title":"用来测试的帖子",
+		"theme_post_content":"测试内容",
+		"user_id":1,
+		"theme_post_createTime":1651995333000,
+		"is_fine":0,
+		"is_top":0,
+		"theme_post_lock":1
+}}
+
+       
+```
+
+请求地址：http://localhost:8080/sqlTest/setFineTheme.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已将该主题帖设为精华",
+	"data":{
+		"theme_post_id":5,
+		"theme_post_title":"用来测试的帖子",
+		"theme_post_content":"测试内容",
+		"user_id":1,
+		"theme_post_createTime":1651995333000,
+		"is_fine":1,
+		"is_top":0,
+		"theme_post_lock":0
+}}
+
+       
+```
+
+请求地址：http://localhost:8080/sqlTest/cancelFineTheme.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已将该主题帖取消精华",
+	"data":{
+		"theme_post_id":5,
+		"theme_post_title":"用来测试的帖子",
+		"theme_post_content":"测试内容",
+		"user_id":1,
+		"theme_post_createTime":1651995333000,
+		"is_fine":0,
+		"is_top":0,
+		"theme_post_lock":0
+}}
+
+       
+```
+
+请求地址：http://localhost:8080/sqlTest/setTopTheme.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已将该主题帖设为置顶",
+	"data":{
+		"theme_post_id":5,
+		"theme_post_title":"用来测试的帖子",
+		"theme_post_content":"测试内容",
+		"user_id":1,
+		"theme_post_createTime":1651995333000,
+		"is_fine":0,
+		"is_top":1,
+		"theme_post_lock":0
+}}
+
+       
+```
+请求地址：http://localhost:8080/sqlTest/cancelTopTheme.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已将该主题帖取消置顶",
+	"data":{
+		"theme_post_id":5,
+		"theme_post_title":"用来测试的帖子",
+		"theme_post_content":"测试内容",
+		"user_id":1,
+		"theme_post_createTime":1651995333000,
+		"is_fine":0,
+		"is_top":0,
+		"theme_post_lock":0
+}}
+
+       
+```
+
+请求地址：http://localhost:8080/sqlTest/showReplyAllByTheme.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回主题帖全部回复！",
+	"data":[{"reply_post_id":1,"user_id":4,"reply_post_content":"我的第一条评论","reply_post_createTime":1651586539000,"theme_post_id":1,"reply_post_lock":0},{"reply_post_id":2,"user_id":2,"reply_post_content":"本帖第一条回复","reply_post_createTime":1651998982000,"theme_post_id":1,"reply_post_lock":0}]
+	}
+
+
+
+```
+请求地址：http://localhost:8080/sqlTest/addNewReply.do post
+
+请求参数：int theme_post_id
+	int user_id
+	String reply_post_content
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"成功发送回复！",
+	"data":
+	{
+		"reply_post_id":2,
+		"user_id":2,
+		"reply_post_content":"本帖第一条回复",
+		"reply_post_createTime":1651998982510,
+		"theme_post_id":1,
+		"reply_post_lock":0
+	}}

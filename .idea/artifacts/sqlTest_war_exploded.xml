@@ -1,0 +1,23 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="sqlTest:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/sqlTest_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="sqlTest" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../MySQLl5.5/驱动jar/mysql-connector-java-5.1.47.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../jdbcTemplate-jar/commons-logging-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../jdbcTemplate-jar/spring-beans-5.1.10.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../jdbcTemplate-jar/spring-core-5.1.10.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../jdbcTemplate-jar/spring-jdbc-5.1.10.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../jdbcTemplate-jar/spring-tx-5.1.10.RELEASE.jar" />
+          <element id="library" level="project" name="Spring MVC-5.2.3.RELEASE" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="sqlTest/web/Web" />
+    </root>
+  </artifact>
+</component>

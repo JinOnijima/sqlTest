@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>这是一个测试</title>
+</head>
+<body>
+    <h2>测试</h2>
+    <form action="login.do" method="post">
+        用户名：<input type="text" name="user_name"> <br>
+        密码：<input type="password" name="user_password"> <br>
+        <input type="submit" value="登录">
+    </form>
+
+    <form action="register.do" method="post">
+        用户名：<input type="text" name="user_name"> <br>
+        密码：<input type="password" name="user_password"> <br>
+        用户性别：<input type="number" name="user_sex"> <br>
+        用户年龄：<input type="number" name="user_age"> <br>
+        用户职业：<input type="text" name="user_pro"> <br>
+        用户爱好：<input type="text" name="user_hobby"> <br>
+        <input type="submit" value="注册">
+    </form>
+    <form action="updateUserMsg.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        用户名：<input type="text" name="user_name"> <br>
+        密码：<input type="password" name="user_password"> <br>
+        用户性别：<input type="number" name="user_sex"> <br>
+        用户年龄：<input type="number" name="user_age"> <br>
+        用户职业：<input type="text" name="user_pro"> <br>
+        用户爱好：<input type="text" name="user_hobby"> <br>
+        <input type="submit" value="修改用户资料">
+    </form>
+
+    <form action="searchPerson.do" method="post">
+        用户名：<input type="text" name="user_name"> <br>
+        <input type="submit" value="搜索用户">
+    </form>
+
+    <form action="showFollowList.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        <input type="submit" value="查看用户关注列表">
+    </form>
+    <form action="showFanList.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        <input type="submit" value="查看用户粉丝列表">
+    </form>
+    <form action="followPerson.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        被关注用户ID：<input type="number" name="follow_id"> <br>
+        <input type="submit" value="关注">
+    </form>
+    <form action="collectTheme.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        被收藏主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="收藏主题">
+    </form>
+
+    <form action="showPersonAllByLock.do" method="post">
+        <input type="submit" value="全部锁定用户">
+    </form>
+    <form action="unlockPerson.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        <input type="submit" value="解锁用户">
+    </form>
+    <form action="lockPerson.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        <input type="submit" value="锁定用户">
+    </form>
+
+
+
+    <form action="showThemeAll.do" method="post">
+        <input type="submit" value="全部未锁定主题帖">
+    </form>
+
+    <form action="showThemeAllByLock.do" method="post">
+        <input type="submit" value="全部锁定主题帖">
+    </form>
+
+    <form action="showThemeCollected.do" method="post">
+        用户ID：<input type="number" name="user_id"> <br>
+        <input type="submit" value="查看该用户全部收藏主题帖">
+    </form>
+
+    <form action="addNewTheme.do" method="post">
+        主题标题：<input type="text" name="theme_post_title"> <br>
+        主题内容：<input type="text" name="theme_post_content"> <br>
+        用户ID：<input type="number" name="user_id"> <br>
+        <input type="submit" value="发帖">
+    </form>
+
+    <form action="unlockTheme.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="解锁主题">
+    </form>
+    <form action="lockTheme.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="锁定主题">
+    </form>
+    <form action="setFineTheme.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="设为精华主题">
+    </form>
+    <form action="cancelFineTheme.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="取消精华主题">
+    </form>
+    <form action="setTopTheme.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="设为置顶主题">
+    </form>
+    <form action="cancelTopTheme.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="取消置顶主题">
+    </form>
+
+
+    <form action="showReplyAllByTheme.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        <input type="submit" value="查看该用户全部收藏主题帖">
+    </form>
+
+    <form action="addNewReply.do" method="post">
+        主题ID：<input type="number" name="theme_post_id"> <br>
+        用户ID：<input type="number" name="user_id"> <br>
+        回复内容：<input type="text" name="reply_post_content"> <br>
+        <input type="submit" value="回复">
+    </form>
+</body>
+</html>
