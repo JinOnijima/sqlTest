@@ -39,6 +39,11 @@ public class Theme_PostServiceImpl implements Theme_PostService {
     }
 
     @Override
+    public List<Theme_Post> getTheme_PostAllByFine() {
+        return theme_postDao.getTheme_PostAllByFine();
+    }
+
+    @Override
     public List<Theme_Post> getTheme_PostByUser_id(int user_id) {
         return theme_postDao.getTheme_PostByUser_id(user_id);
     }
@@ -63,6 +68,26 @@ public class Theme_PostServiceImpl implements Theme_PostService {
         return theme_postDao.deleteTheme_Post(theme_post);
     }
 
+    @Override
+    public ResultData ThemeMsg(int theme_post_id) {
+        ResultData resultData=new ResultData();
+        Theme_Post theme_post=getTheme_PostByTheme_post_id(theme_post_id);
+        resultData.setStatus(200);
+        resultData.setMessage("获取到主题帖信息！");
+        resultData.setData(theme_post);
+        return resultData;
+    }
+
+    @Override
+    public ResultData SearchTheme(String theme_post_title) {
+        ResultData resultData=new ResultData();
+        List<Theme_Post> theme_posts=getTheme_PostByTitle(theme_post_title);
+        resultData.setStatus(200);
+        resultData.setMessage("已返回根据模糊查询获得的全部主题帖");
+        resultData.setData(theme_posts);
+        return resultData;
+    }
+
     public ResultData ShowThemeAll()
     {
         ResultData resultData=new ResultData();
@@ -84,11 +109,31 @@ public class Theme_PostServiceImpl implements Theme_PostService {
     }
 
     @Override
+    public ResultData ShowThemeAllByFine() {
+        ResultData resultData=new ResultData();
+        List<Theme_Post> theme_posts=getTheme_PostAllByFine();
+        resultData.setStatus(200);
+        resultData.setMessage("已按照发帖时间降序的顺序返回全部精华主题帖");
+        resultData.setData(theme_posts);
+        return resultData;
+    }
+
+    @Override
     public ResultData ShowThemeCollected(int user_id) {
         ResultData resultData=new ResultData();
         List<Theme_Post> theme_posts=theme_postDao.getTheme_Post_Collected(user_id);
         resultData.setStatus(200);
         resultData.setMessage("已返回该用户收藏的主题帖信息");
+        resultData.setData(theme_posts);
+        return resultData;
+    }
+
+    @Override
+    public ResultData ShowThemeAllByUser_id(int user_id) {
+        ResultData resultData=new ResultData();
+        List<Theme_Post> theme_posts=theme_postDao.getTheme_PostByUser_id(user_id);
+        resultData.setStatus(200);
+        resultData.setMessage("已返回该用户发布的主题帖信息");
         resultData.setData(theme_posts);
         return resultData;
     }

@@ -1,8 +1,10 @@
 package com.Dao.impl;
 
 import com.Dao.Reply_PostDao;
+import com.entity.Person;
 import com.entity.Reply_Post;
 import com.entity.Theme_Post;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -35,6 +37,16 @@ public class Reply_PostImpl implements Reply_PostDao {
     }
 
     @Override
+    public Reply_Post getReply_PostById(int reply_post_id) {
+        String sql="SELECT * FROM reply_post WHERE reply_post_id=?";
+        try{
+            return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(Reply_Post.class),reply_post_id);
+        }catch (EmptyResultDataAccessException e){
+            return null;
+        }
+    }
+
+    @Override
     public List<Reply_Post> getReply_PostByUser_id(int user_id) {
         String sql="SELECT * FROM reply_post WHERE user_id="+user_id;
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Reply_Post>(Reply_Post.class));
@@ -42,7 +54,7 @@ public class Reply_PostImpl implements Reply_PostDao {
 
     @Override
     public List<Reply_Post> getReply_PostByTheme_post_id(int theme_post_id) {
-        String sql="SELECT * FROM reply_post WHERE theme_post_id="+theme_post_id;
+        String sql="SELECT * FROM reply_post WHERE theme_post_id="+theme_post_id+"AND reply_post_lock==0";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Reply_Post>(Reply_Post.class));
     }
 

@@ -25,7 +25,7 @@ public class PersonDaoImpl implements PersonDao {
                 "INSERT INTO person(user_id,user_name,user_password,user_sex,user_age," +
                         "user_pro,user_hobby,following_list,fan_list,following_num,fan_num,user_lock," +
                         "theme_collect_list,is_manager) " +
-                        "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int update=jdbcTemplate.update(sql, person.getUser_id(),person.getUser_name(),
                 person.getUser_password(),person.getUser_sex(),person.getUser_age(),
                 person.getUser_pro(), person.getUser_hobby(), person.getFollowing_list(),

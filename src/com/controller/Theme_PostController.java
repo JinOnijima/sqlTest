@@ -5,15 +5,31 @@ import com.entity.Theme_Post;
 import com.service.Theme_PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class Theme_PostController {
     @Autowired
     Theme_PostService theme_postService;
 
+    @RequestMapping("themeMsg.do")
+    @ResponseBody
+    public ResultData themeMsg(@RequestParam(name="theme_post_id",required = true) int theme_post_id)
+    {
+        ResultData resultData=theme_postService.ThemeMsg(theme_post_id);
+        return resultData;
+    }
+    @RequestMapping("searchTheme.do")
+    @ResponseBody
+    public ResultData searchTheme(@RequestParam(name="theme_post_title")String theme_post_title)
+    {
+        ResultData resultData=theme_postService.SearchTheme(theme_post_title);
+        return resultData;
+    }
     @RequestMapping("showThemeAll.do")
     @ResponseBody
     public ResultData showThemeAll()
@@ -28,11 +44,25 @@ public class Theme_PostController {
         ResultData resultData=theme_postService.ShowThemeAllByLock();
         return resultData;
     }
+    @RequestMapping("showThemeAllByFine.do")
+    @ResponseBody
+    public ResultData showThemeAllByFine()
+    {
+        ResultData resultData=theme_postService.ShowThemeAllByFine();
+        return resultData;
+    }
     @RequestMapping("showThemeCollected.do")
     @ResponseBody
     public ResultData showThemeCollected(@RequestParam(name="user_id",required = true) int user_id)
     {
         ResultData resultData=theme_postService.ShowThemeCollected(user_id);
+        return resultData;
+    }
+    @RequestMapping("showThemeAllByUser_id.do")
+    @ResponseBody
+    public ResultData showThemeAllByUser_id(@RequestParam(name="user_id",required = true) int user_id)
+    {
+        ResultData resultData=theme_postService.ShowThemeAllByUser_id(user_id);
         return resultData;
     }
     @RequestMapping("addNewTheme.do")

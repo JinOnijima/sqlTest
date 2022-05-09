@@ -5,6 +5,7 @@ import com.entity.Person;
 import com.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Objects;
 
 @Controller
+@CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class PersonController {
     @Autowired
     private PersonService personService;
@@ -54,6 +56,13 @@ public class PersonController {
     {
         ResultData resultData=personService.UpdateUserMsg(user_id,user_name,user_password,
                 user_sex,user_age,user_pro,user_hobby);
+        return resultData;
+    }
+    @RequestMapping("/personMsg.do")
+    @ResponseBody
+    public ResultData personMsg(@RequestParam(name="user_id",required = true)int user_id)
+    {
+        ResultData resultData=personService.PersonMsg(user_id);
         return resultData;
     }
     @RequestMapping("/searchPerson.do")

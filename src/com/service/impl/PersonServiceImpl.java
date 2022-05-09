@@ -95,6 +95,7 @@ public class PersonServiceImpl implements PersonService {
             person.setFan_num(0);
             person.setUser_lock(0);
             person.setTheme_collect_list("");
+            person.setIs_manager(0);
             addPerson(person);
             resultData.setStatus(200);
             resultData.setMessage("注册成功！");
@@ -114,9 +115,13 @@ public class PersonServiceImpl implements PersonService {
         {
             resultData.setStatus(400);
             resultData.setMessage("登录失败，用户不存在或密码错误！");
+        }else if(person.getUser_lock()==1) {
+            resultData.setStatus(400);
+            resultData.setMessage("登录失败，用户账号被锁定！");
         }else{
             resultData.setStatus(200);
             resultData.setMessage("登录成功！");
+            resultData.setData(person);
         }
         return resultData;
     }
@@ -127,9 +132,13 @@ public class PersonServiceImpl implements PersonService {
         {
             resultData.setStatus(400);
             resultData.setMessage("登录失败，用户不存在或密码错误或非管理员用户！");
+        }else if(person.getUser_lock()==1) {
+            resultData.setStatus(400);
+            resultData.setMessage("登录失败，用户账号被锁定！");
         }else{
             resultData.setStatus(200);
             resultData.setMessage("登录成功！");
+            resultData.setData(person);
         }
         return resultData;
     }
@@ -157,6 +166,17 @@ public class PersonServiceImpl implements PersonService {
         }
         return resultData;
     }
+
+    @Override
+    public ResultData PersonMsg(int user_id) {
+        ResultData resultData=new ResultData();
+        Person person=getPersonById(user_id);
+        resultData.setStatus(200);
+        resultData.setMessage("已根据id获取用户信息！");
+        resultData.setData(person);
+        return resultData;
+    }
+
     public ResultData SearchPerson(String user_name){
         ResultData resultData=new ResultData();
         Person person=getPersonByName(user_name);

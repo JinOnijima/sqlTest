@@ -11,15 +11,20 @@ public interface Theme_PostService {
     Theme_Post getTheme_PostByTheme_post_id(int theme_post_id);
     List<Theme_Post> getTheme_PostAll();
     List<Theme_Post> getTheme_PostAllByLock();
+    List<Theme_Post> getTheme_PostAllByFine();
     List<Theme_Post> getTheme_PostByUser_id(int user_id);
     List<Theme_Post> getTheme_PostByTitle(String theme_post_title);
     List<Theme_Post> getTheme_PostByUser_name(String user_name);
     int countTheme_PostNum();
     int deleteTheme_Post(Theme_Post theme_post);
 
+    ResultData ThemeMsg(int theme_post_id);
+    ResultData SearchTheme(String theme_post_title);
     ResultData ShowThemeAll();
     ResultData ShowThemeAllByLock();
+    ResultData ShowThemeAllByFine();
     ResultData ShowThemeCollected(int user_id);
+    ResultData ShowThemeAllByUser_id(int user_id);
     ResultData AddNewTheme(String theme_post_title,String theme_post_content,int user_id);
     ResultData UnlockTheme(int theme_post_id);
     ResultData LockTheme(int theme_post_id);

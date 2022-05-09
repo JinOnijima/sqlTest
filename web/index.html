@@ -69,7 +69,10 @@
     </form>
 
 
-
+    <form action="searchTheme.do" method="post">
+        主题标题：<input type="text" name="theme_post_title"><br>
+        <input type="submit" value="查询主题帖">
+    </form>
     <form action="showThemeAll.do" method="post">
         <input type="submit" value="全部未锁定主题帖">
     </form>
@@ -118,7 +121,7 @@
 
     <form action="showReplyAllByTheme.do" method="post">
         主题ID：<input type="number" name="theme_post_id"> <br>
-        <input type="submit" value="查看该用户全部收藏主题帖">
+        <input type="submit" value="查看该主题帖全部回复">
     </form>
 
     <form action="addNewReply.do" method="post">
@@ -126,6 +129,10 @@
         用户ID：<input type="number" name="user_id"> <br>
         回复内容：<input type="text" name="reply_post_content"> <br>
         <input type="submit" value="回复">
+    </form>
+    <form action="lockReply.do" method="post">
+        回复ID：<input type="number" name="reply_post_id"> <br>
+        <input type="submit" value="锁定回复">
     </form>
 </body>
 </html>

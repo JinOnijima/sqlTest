@@ -1,3 +1,44 @@
+register.do 注册
+login.do    登录
+loginManager.do 管理员登录
+updateUserMsg.do    更新用户信息
+personMsg.do    获取用户信息
+searchPerson.do 根据用户名搜索用户
+showFollowList.do   查看用户关注列表
+showFanList.do  查看用户粉丝列表
+followPerson.do 关注用户
+collectTheme.do 收藏主题
+showPersonAllByLock.do  查看所有被锁定的用户
+unlockPerson.do 解锁用户
+lockPerson.do   锁定用户
+
+replyMsg.do 获取回复信息
+addNewReply.do  回帖
+showReplyAllByUser_id.do    查看用户历史回复
+showReplyAllByTheme.do  查看主题下所有回复
+lockReply.do    锁定回复
+
+themeMsg.do 获取主题信息
+searchTheme.do  根据标题搜索主题（模糊查询）
+showThemeAll.do 以置顶帖优先、发布时间最晚优先的顺序查看全部未锁定主题帖
+showThemeAllByLock.do   查看全部锁定主题帖
+showThemeAllByFine.do   查看全部精华主题帖
+showThemeCollected.do   查看该用户全部收藏主题帖
+showThemeAllByUser_id.do    查看该用户全部发布的主题帖
+addNewTheme.do  发帖
+unlockTheme.do  解锁主题
+lockTheme.do    锁定主题
+setFineTheme.do 设置精华主题
+cancelFineTheme.do  取消精华主题
+setTopTheme.do  设置置顶主题
+cancelTopTheme.do 取消置顶主题
+
+
+
+
+
+
+
 请求地址：http://localhost:8080/sqlTest/register.do post
 
 请求参数：String user_name
@@ -100,7 +141,37 @@
 		"is_manager":0
 		}}
 
-       
+
+```
+请求地址：http://localhost:8080/sqlTest/personMsg.do post
+
+请求参数：int user_id
+
+
+返回值 json
+
+```
+"ResultData": {
+	"status":200,
+	"message":"已根据id获取用户信息！",
+	"data":{
+		"user_id":3,
+		"user_name":"新名字",
+		"user_password":"abc123",
+		"user_sex":1,
+		"user_age":12,
+		"user_pro":"新职业",
+		"user_hobby":"新爱好",
+		"following_list":"1,2,5",
+		"fan_list":"",
+		"following_num":3,
+		"fan_num":0,
+		"user_lock":0,
+		"theme_collect_list":"3",
+		"is_manager":0
+		}}
+
+
 ```
 
 请求地址：http://localhost:8080/sqlTest/searchPerson.do post
@@ -254,6 +325,53 @@
 
 ```
 
+请求地址：http://localhost:8080/sqlTest/themeMsg.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"获取到主题帖信息！",
+	"data":{
+		"theme_post_id":5,
+		"theme_post_title":"用来测试的帖子",
+		"theme_post_content":"测试内容",
+		"user_id":1,
+		"theme_post_createTime":1651995333000,
+		"is_fine":0,
+		"is_top":0,
+		"theme_post_lock":1
+}}
+
+```
+
+请求地址：http://localhost:8080/sqlTest/searchTheme.do post
+
+请求参数：String theme_post_title
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回根据模糊查询获得的全部主题帖",
+	"data":[{
+	    "theme_post_id":1,
+	    "theme_post_title":"我的第一个主题帖",
+	    "theme_post_content":"我恨你们！",
+	    "user_id":1,
+	    "theme_post_createTime":1651505627000,
+	    "is_fine":0,
+	    "is_top":0,
+	    "theme_post_lock":0},
+	    {"theme_post_id":2,"theme_post_title":"我的第二个主题帖","theme_post_content":"我恨你们！","user_id":1,"theme_post_createTime":1651766332000,"is_fine":0,"is_top":1,"theme_post_lock":0},{"theme_post_id":3,"theme_post_title":"我的第三个主题帖","theme_post_content":"我恨你们！","user_id":1,"theme_post_createTime":1651766355000,"is_fine":0,"is_top":0,"theme_post_lock":0}]
+	    }
+
+```
+
 请求地址：http://localhost:8080/sqlTest/showThemeAll.do post
 
 请求参数：无
@@ -291,6 +409,38 @@
 		}]}
 
        
+```
+请求地址：http://localhost:8080/sqlTest/showThemeAllByFine.do post
+
+请求参数：无
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已按照置顶帖优先、发帖时间降序的顺序返回全部精华主题帖",
+	"data":[{
+		//跟上面一样
+		}]}
+
+
+```
+请求地址：http://localhost:8080/sqlTest/showThemeAllByUser_id.do post
+
+请求参数：int user_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回该用户发布的主题帖信息",
+	"data":[{
+		//跟上面一样
+		}]}
+
+
 ```
 
 ```
@@ -476,7 +626,29 @@
 		"theme_post_lock":0
 }}
 
-       
+
+```
+请求地址：http://localhost:8080/sqlTest/replyMsg.do post
+
+请求参数：int reply_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"获取到回复帖信息！",
+	"data":
+	{
+		"reply_post_id":2,
+		"user_id":2,
+		"reply_post_content":"本帖第一条回复",
+		"reply_post_createTime":1651998982510,
+		"theme_post_id":1,
+		"reply_post_lock":0
+	}}
+
+
 ```
 
 请求地址：http://localhost:8080/sqlTest/showReplyAllByTheme.do post
@@ -492,6 +664,22 @@
 	"data":[{"reply_post_id":1,"user_id":4,"reply_post_content":"我的第一条评论","reply_post_createTime":1651586539000,"theme_post_id":1,"reply_post_lock":0},{"reply_post_id":2,"user_id":2,"reply_post_content":"本帖第一条回复","reply_post_createTime":1651998982000,"theme_post_id":1,"reply_post_lock":0}]
 	}
 
+
+
+```
+
+请求地址：http://localhost:8080/sqlTest/showReplyAllByUser_id.do post
+
+请求参数：int theme_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已返回该用户全部回复！",
+	"data":[//跟上面一样]
+	}
 
 
 ```
@@ -515,4 +703,25 @@
 		"reply_post_createTime":1651998982510,
 		"theme_post_id":1,
 		"reply_post_lock":0
+	}}
+
+```
+请求地址：http://localhost:8080/sqlTest/lockReply.do post
+
+请求参数：int reply_post_id
+
+返回值 json
+
+```
+"ResultData":{
+	"status":200,
+	"message":"已锁定该回复帖并无法再解锁",
+	"data":
+	{
+		"reply_post_id":2,
+		"user_id":2,
+		"reply_post_content":"本帖第一条回复",
+		"reply_post_createTime":1651998982510,
+		"theme_post_id":1,
+		"reply_post_lock":1
 	}}

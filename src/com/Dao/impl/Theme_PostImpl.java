@@ -56,6 +56,11 @@ public class Theme_PostImpl implements Theme_PostDao {
         String sql="SELECT * FROM Theme_Post WHERE theme_post_lock=1 ORDER BY is_top desc,theme_post_createTime desc";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Theme_Post>(Theme_Post.class));
     }
+    public List<Theme_Post> getTheme_PostAllByFine(){
+        String sql="SELECT * FROM Theme_Post WHERE theme_post_lock=0 AND is_fine=1"+
+                " ORDER BY is_top desc,theme_post_createTime desc";
+        return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Theme_Post>(Theme_Post.class));
+    }
     @Override
     public List<Theme_Post> getTheme_PostByUser_id(int user_id) {
         String sql="SELECT * FROM theme_post WHERE user_id="+user_id;

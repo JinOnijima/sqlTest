@@ -22,6 +22,7 @@ public interface PersonService {
     ResultData LoginManager(String user_name,String password);
     ResultData UpdateUserMsg(int user_id,String user_name,String user_password,int user_sex,
                              int user_age,String user_pro,String user_hobby);
+    ResultData PersonMsg(int user_id);
     ResultData SearchPerson(String user_name);
     ResultData ShowFollowList(int user_id);
     ResultData ShowFanList(int user_id);
