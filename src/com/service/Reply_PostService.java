@@ -1,6 +1,7 @@
 package com.service;
 
 import com.Result.ResultData;
+import com.entity.Combine_Reply_Person;
 import com.entity.Reply_Post;
 
 import java.util.List;
@@ -11,6 +12,8 @@ public interface Reply_PostService {
     Reply_Post getReply_PostById(int reply_post_id);
     List<Reply_Post> getReply_PostByUser_id(int user_id);
     List<Reply_Post> getReply_PostByTheme_post_id(int theme_post_id);
+    Combine_Reply_Person getCombineRP(Reply_Post reply_post);
+    List<Combine_Reply_Person> getCombineRPList(List<Reply_Post> reply_posts);
     int countReply_PostNum();
     int deleteReply_Post(Reply_Post reply_post);
 

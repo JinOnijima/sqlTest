@@ -14,7 +14,7 @@ lockPerson.do   锁定用户
 
 replyMsg.do 获取回复信息
 addNewReply.do  回帖
-showReplyAllByUser_id.do    查看用户历史回复
+showReplyAllByUser_id.do    查看用户所有主题帖下的回复（按时间降序）
 showReplyAllByTheme.do  查看主题下所有回复
 lockReply.do    锁定回复
 

@@ -1,6 +1,7 @@
 package com.service;
 
 import com.Result.ResultData;
+import com.entity.Combine_Theme_Person;
 import com.entity.Theme_Post;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface Theme_PostService {
     List<Theme_Post> getTheme_PostByUser_id(int user_id);
     List<Theme_Post> getTheme_PostByTitle(String theme_post_title);
     List<Theme_Post> getTheme_PostByUser_name(String user_name);
+    Combine_Theme_Person getCombineTP(Theme_Post theme_post);
+    List<Combine_Theme_Person> getCombineTPList(List<Theme_Post> theme_posts);
     int countTheme_PostNum();
     int deleteTheme_Post(Theme_Post theme_post);
 

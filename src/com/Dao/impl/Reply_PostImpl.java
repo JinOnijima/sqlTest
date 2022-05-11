@@ -48,13 +48,14 @@ public class Reply_PostImpl implements Reply_PostDao {
 
     @Override
     public List<Reply_Post> getReply_PostByUser_id(int user_id) {
-        String sql="SELECT * FROM reply_post WHERE user_id="+user_id;
+        String sql="SELECT * FROM reply_post WHERE theme_post_id in(SELECT * FROM theme_post WHERE user_id="
+                +user_id+") ORDER BY reply_post_createTime DESC";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Reply_Post>(Reply_Post.class));
     }
 
     @Override
     public List<Reply_Post> getReply_PostByTheme_post_id(int theme_post_id) {
-        String sql="SELECT * FROM reply_post WHERE theme_post_id="+theme_post_id+"AND reply_post_lock==0";
+        String sql="SELECT * FROM reply_post WHERE theme_post_id="+theme_post_id+" AND reply_post_lock=0";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<Reply_Post>(Reply_Post.class));
     }
 
